@@ -1,0 +1,30 @@
+<form [formGroup]="cadastroForm" (ngSubmit)="submitForm()">
+  <input type="text" formControlName="firstName" />
+  <span
+    *ngIf="
+      cadastroForm.get('firstName')?.errors &&
+      cadastroForm.get('firstName')?.touched &&
+        cadastroForm.get('firstName')?.dirty
+    "
+  >
+    Favor adicionar um nome!
+  </span>
+  <br />
+  <br />
+  <input type="text" formControlName="lastName" />
+
+  <p>
+    Json Format Saída:
+    {{ cadastroForm.get('firstName')?.value }}
+    {{ cadastroForm.get('lastName')?.value }}
+    <br />
+    Erro => {{ cadastroForm.get('firstName')?.errors | json }}
+    <br />
+    Tocou => {{ cadastroForm.get('firstName')?.touched | json }}
+    <br />
+    Sujou => {{ cadastroForm.get('firstName')?.dirty | json }}
+  </p>
+
+  <br />
+  <button>Enviar</button>
+</form>
